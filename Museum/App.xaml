@@ -15,10 +15,11 @@
                  -->
                 <ResourceDictionary Source="Common/StandardStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
+            
             <!-- Ressources spécifiques à l'application -->
-
+            <local:MuseumSource x:Key="museumSource" />
             <x:String x:Key="AppName">Museum</x:String>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

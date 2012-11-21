@@ -1,5 +1,5 @@
 <museum>
-	<room name="room1" description="This is the descriptoin of the room 1">
+	<room name="Room 1" description="This is the description of the room 1">
 		<artwork
 			title="Title artwork 1"
 			artist="Artist artwork 1"
@@ -7,13 +7,13 @@
 			image="Image artwork 1"
 			/>
 		<artwork
-			title="Title artwork 1"
-			artist="Artist artwork 1"
-			desc="Description artwork 1"
-			image="Image artwork 1"
+			title="Title artwork 2"
+			artist="Artist artwork 2"
+			desc="Description artwork 2"
+			image="Image artwork 2"
 			/>
 	</room>
-	<room name="room1" description="This is the descriptoin of the room 1">
+	<room name="Room 2" description="This is the description of the room 2">
 		<artwork
 			title="Title artwork 1"
 			artist="Artist artwork 1"
@@ -21,10 +21,10 @@
 			image="Image artwork 1"
 			/>
 		<artwork
-			title="Title artwork 1"
-			artist="Artist artwork 1"
-			desc="Description artwork 1"
-			image="Image artwork 1"
+			title="Title artwork 2"
+			artist="Artist artwork 2"
+			desc="Description artwork 2"
+			image="Image artwork 2"
 			/>
 	</room>
 </museum>

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Museum
 {
@@ -39,6 +40,20 @@ namespace Museum
     class MuseumSource
     {
         private ObservableCollection<Room> _Rooms = new ObservableCollection<Room>();
+
+        public ObservableCollection<Room> Rooms
+        {
+            get
+            {
+                return this._Rooms;
+            }
+        }
+
+        public async Task GetRoomsAsync()
+        {
+            
+
+        }
 
     }
 }
