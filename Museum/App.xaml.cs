@@ -51,6 +51,7 @@ namespace Museum
 				if (museumSource.Rooms.Count == 0)
 				{
 					await museumSource.GetRoomsAsync();
+					Debug.WriteLine(museumSource.ToString());
 				}
 			}
 

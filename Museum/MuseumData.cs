@@ -93,6 +93,26 @@ namespace Museum
 				Debug.WriteLine(e.ToString());
 			}
 
+
+
+		}
+
+		public override string ToString()
+		{
+			string s = "";
+			foreach (Room room in Rooms)
+			{
+				s += room.Name + "\n";
+				s += room.Description + "\n";
+				foreach (Artwork artwork in room.Artworks)
+				{
+					s += artwork.Title + "\n";
+					s += artwork.Artist + "\n";
+					s += artwork.Description + "\n";
+					s += artwork.Image + "\n";
+				}
+			}
+			return s;
 		}
 
 		private async Task<Stream> GetDataStringAsync()
