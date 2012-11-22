@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -49,11 +52,22 @@ namespace Museum
             }
         }
 
-        public async Task GetRoomsAsync()
+        public async void GetRoomsAsync()
         {
-            
+            string content = await GetDataString();
+
+            Debug.WriteLine(content);
 
         }
 
+        private async Task<string> GetDataString()
+        {
+            WebRequest request = WebRequest.Create("http://localhost/museum/data.xml");
+            WebResponse response = await request.GetResponseAsync();
+            Stream stream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(stream);
+            string content = reader.ReadToEnd();
+            return content;
+        }
     }
 }
