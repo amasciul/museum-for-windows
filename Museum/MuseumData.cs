@@ -11,72 +11,105 @@ using System.Xml;
 
 namespace Museum
 {
-    // Room
-    // Holds info for a single room,, including a list of artworks (Artwork)
-    class Room
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        private List<Artwork> _artworks = new List<Artwork>();
-        public List<Artwork> Artworks
-        {
-            get
-            {
-                return this._artworks;
-            }
-        }
-    }
+	// Room
+	// Holds info for a single room,, including a list of artworks (Artwork)
+	class Room
+	{
+		public string Name { get; set; }
+		public string Description { get; set; }
+		private List<Artwork> _artworks = new List<Artwork>();
+		public List<Artwork> Artworks
+		{
+			get
+			{
+				return this._artworks;
+			}
+		}
+	}
 
-    // Artwork
-    // Holds info for a single artwork
-    class Artwork
-    {
-        public string Title { get; set; }
-        public string Artist { get; set; }
-        public string Description { get; set; }
-        public Uri Image { get; set; }
-    }
+	// Artwork
+	// Holds info for a single artwork
+	class Artwork
+	{
+		public string Title { get; set; }
+		public string Artist { get; set; }
+		public string Description { get; set; }
+		public Uri Image { get; set; }
+	}
 
-    // MuseumSource
-    // Holds a collection of rooms (Room), and contains methods needed to
-    // retreive the rooms.
-    class MuseumSource
-    {
-        private ObservableCollection<Room> _Rooms = new ObservableCollection<Room>();
+	// MuseumSource
+	// Holds a collection of rooms (Room), and contains methods needed to
+	// retreive the rooms.
+	class MuseumSource
+	{
+		private ObservableCollection<Room> _Rooms = new ObservableCollection<Room>();
 
-        public ObservableCollection<Room> Rooms
-        {
-            get
-            {
-                return this._Rooms;
-            }
-        }
+		public ObservableCollection<Room> Rooms
+		{
+			get
+			{
+				return this._Rooms;
+			}
+		}
 
-        public async Task GetRoomsAsync()
-        {
-            string content = await GetDataStringAsync();
+		public async Task GetRoomsAsync()
+		{
+			Stream contentStream = await GetDataStringAsync();
+			try
+			{
+				XmlReader reader = XmlReader.Create(contentStream);
 
-            Debug.WriteLine(content);
+				Room currentRoom = null;
+				Artwork currentArtwork = null;
 
-        }
+				while (reader.Read())
+				{
+					if (reader.IsStartElement())
+					{
+						switch (reader.Name)
+						{
+							case "room":
+								currentRoom = new Room();
+								currentRoom.Name = reader["name"];
+								currentRoom.Description = reader["description"];
+								_Rooms.Add(currentRoom);
+								break;
+							case "artwork":
+								currentArtwork = new Artwork();
+								currentArtwork.Title = reader["title"];
+								currentArtwork.Artist = reader["artist"];
+								currentArtwork.Description = reader["desc"];
+								//currentArtwork.Image = new Uri(reader["image"]);
+								if (currentRoom != null) currentRoom.Artworks.Add(currentArtwork);
+								break;
+						}
+					}
+				}
+			}
+			catch (XmlException e)
+			{
+				Debug.WriteLine("Error during XML reading");
+				Debug.WriteLine(e.Message);
+				Debug.WriteLine(e.ToString());
+			}
 
-        private async Task<string> GetDataStringAsync()
-        {
-            try
-            {
-                WebRequest request = WebRequest.Create("http://localhost/museum/data.xml");
-                WebResponse response = await request.GetResponseAsync();
-                Stream stream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(stream);
-                string content = reader.ReadToEnd();
-                return content;
-            }
-            catch (WebException)
-            {
-                Debug.WriteLine("Error during request");
-                return null;
-            }
-            
-        }
-    }
+		}
+
+		private async Task<Stream> GetDataStringAsync()
+		{
+			try
+			{
+				WebRequest request = WebRequest.Create("http://localhost/museum/data.xml");
+				WebResponse response = await request.GetResponseAsync();
+				Stream stream = response.GetResponseStream();
+				return stream;
+			}
+			catch (WebException)
+			{
+				Debug.WriteLine("Error during request");
+				return null;
+			}
+
+		}
+	}
 }
