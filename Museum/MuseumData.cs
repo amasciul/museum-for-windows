@@ -79,7 +79,7 @@ namespace Museum
 								currentArtwork.Title = reader["title"];
 								currentArtwork.Artist = reader["artist"];
 								currentArtwork.Description = reader["desc"];
-								//currentArtwork.Image = new Uri(reader["image"]);
+								currentArtwork.Image = new Uri(reader["image"]);
 								if (currentRoom != null) currentRoom.Artworks.Add(currentArtwork);
 								break;
 						}

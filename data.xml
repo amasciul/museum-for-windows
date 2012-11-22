@@ -4,13 +4,13 @@
 			title="Title artwork 1"
 			artist="Artist artwork 1"
 			desc="Description artwork 1"
-			image="Image artwork 1"
+			image="http://localhost/museum/defaultartwork.png"
 			/>
 		<artwork
 			title="Title artwork 2"
 			artist="Artist artwork 2"
 			desc="Description artwork 2"
-			image="Image artwork 2"
+			image="http://localhost/museum/defaultartwork.png"
 			/>
 	</room>
 	<room name="Room 2" description="This is the description of the room 2">
@@ -18,13 +18,13 @@
 			title="Title artwork 1"
 			artist="Artist artwork 1"
 			desc="Description artwork 1"
-			image="Image artwork 1"
+			image="http://localhost/museum/defaultartwork.png"
 			/>
 		<artwork
 			title="Title artwork 2"
 			artist="Artist artwork 2"
 			desc="Description artwork 2"
-			image="Image artwork 2"
+			image="http://localhost/museum/defaultartwork.png"
 			/>
 	</room>
 </museum>
