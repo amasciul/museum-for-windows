@@ -44,6 +44,15 @@ namespace Museum
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
             Frame rootFrame = Window.Current.Content as Frame;
+            MuseumSource museumSource = (MuseumSource)App.Current.Resources["museumSource"];
+
+            if (museumSource != null)
+            {
+                if (museumSource.Rooms.Count == 0)
+                {
+                    await museumSource.GetRoomsAsync();
+                }
+            }
 
             // Ne répétez pas l'initialisation de l'application lorsque la fenêtre comporte déjà du contenu,
             // assurez-vous juste que la fenêtre est active

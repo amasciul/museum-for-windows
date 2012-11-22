@@ -52,22 +52,31 @@ namespace Museum
             }
         }
 
-        public async void GetRoomsAsync()
+        public async Task GetRoomsAsync()
         {
-            string content = await GetDataString();
+            string content = await GetDataStringAsync();
 
             Debug.WriteLine(content);
 
         }
 
-        private async Task<string> GetDataString()
+        private async Task<string> GetDataStringAsync()
         {
-            WebRequest request = WebRequest.Create("http://localhost/museum/data.xml");
-            WebResponse response = await request.GetResponseAsync();
-            Stream stream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(stream);
-            string content = reader.ReadToEnd();
-            return content;
+            try
+            {
+                WebRequest request = WebRequest.Create("http://localhost/museum/data.xml");
+                WebResponse response = await request.GetResponseAsync();
+                Stream stream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                string content = reader.ReadToEnd();
+                return content;
+            }
+            catch (WebException)
+            {
+                Debug.WriteLine("Error during request");
+                return null;
+            }
+            
         }
     }
 }
