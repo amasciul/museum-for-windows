@@ -1,7 +1,6 @@
 ﻿<common:LayoutAwarePage
     x:Name="pageRoot"
     x:Class="Museum.GroupedItemsPage"
-    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Museum"
@@ -19,13 +18,17 @@
         -->
         <CollectionViewSource
             x:Name="groupedItemsViewSource"
-            Source="{Binding Groups}"
+            Source="{Binding Rooms}"
             IsSourceGrouped="true"
             ItemsPath="TopItems"
             d:Source="{Binding AllGroups, Source={d:DesignInstance Type=data:SampleDataSource, IsDesignTimeCreatable=True}}"/>
+		
     </Page.Resources>
+	<common:LayoutAwarePage.DataContext>
+		<StaticResource ResourceKey="museumSource"/>
+	</common:LayoutAwarePage.DataContext>
 
-    <!--
+	<!--
         La grille sert de panneau racine à la page, permettant de définir deux lignes :
         * La ligne 0 qui contient le bouton Précédent et le titre de la page
         * La ligne 1 qui contient le reste de la page
@@ -65,7 +68,7 @@
                                     Click="Header_Click"
                                     Style="{StaticResource TextPrimaryButtonStyle}" >
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Title}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
+                                        <TextBlock Text="{Binding Name}" Margin="3,-7,10,10" Style="{StaticResource GroupHeaderTextStyle}" />
                                         <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-7,0,10" Style="{StaticResource GroupHeaderTextStyle}"/>
                                     </StackPanel>
                                 </Button>
