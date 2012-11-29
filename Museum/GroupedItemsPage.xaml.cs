@@ -52,11 +52,11 @@ namespace Museum
 		void Header_Click(object sender, RoutedEventArgs e)
 		{
 			// Déterminez le groupe représenté par l'instance Button
-			var group = (sender as FrameworkElement).DataContext;
+			var room = (sender as FrameworkElement).DataContext;
 
 			// Accédez à la page de destination souhaitée, puis configurez la nouvelle page
 			// en transmettant les informations requises en tant que paramètre de navigation.
-			this.Frame.Navigate(typeof(GroupDetailPage), ((SampleDataGroup)group).UniqueId);
+			this.Frame.Navigate(typeof(GroupDetailPage), ((Room)room).Name);
 		}
 
 		/// <summary>
@@ -69,7 +69,7 @@ namespace Museum
 		{
 			// Accédez à la page de destination souhaitée, puis configurez la nouvelle page
 			// en transmettant les informations requises en tant que paramètre de navigation.
-			var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
+			var itemId = ((Artwork)e.ClickedItem).Title;
 			this.Frame.Navigate(typeof(ItemDetailPage), itemId);
 		}
 	}
