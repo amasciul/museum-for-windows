@@ -97,6 +97,15 @@ namespace Museum
 
 		}
 
+		public Room GetRoom(String roomName)
+		{
+			foreach(Room r in Rooms)
+			{
+				if(r.Name == roomName)return r;
+			}
+			return null;
+		}
+
 		public override string ToString()
 		{
 			string s = "";
