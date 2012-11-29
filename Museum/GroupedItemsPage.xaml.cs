@@ -40,8 +40,8 @@ namespace Museum
 		protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
 		{
 			// TODO: créez un modèle de données approprié pour le domaine posant problème pour remplacer les exemples de données
-			//MuseumSource museumSource = (MuseumSource)App.Current.Resources["museumSource"];
-			//if(museumSource!=null) this.DefaultViewModel["Groups"] = museumSource;
+			MuseumSource museumSource = (MuseumSource)App.Current.Resources["museumSource"];
+			if(museumSource!=null) this.DefaultViewModel["Rooms"] = museumSource.Rooms;
 		}
 
 		/// <summary>

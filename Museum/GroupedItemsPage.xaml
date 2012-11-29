@@ -8,6 +8,7 @@
     xmlns:common="using:Museum.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -20,13 +21,9 @@
             x:Name="groupedItemsViewSource"
             Source="{Binding Rooms}"
             IsSourceGrouped="true"
-            ItemsPath="TopItems"
-            d:Source="{Binding AllGroups, Source={d:DesignInstance Type=data:SampleDataSource, IsDesignTimeCreatable=True}}"/>
+            ItemsPath="TopItems"/>
 		
     </Page.Resources>
-	<common:LayoutAwarePage.DataContext>
-		<StaticResource ResourceKey="museumSource"/>
-	</common:LayoutAwarePage.DataContext>
 
 	<!--
         La grille sert de panneau racine à la page, permettant de définir deux lignes :
