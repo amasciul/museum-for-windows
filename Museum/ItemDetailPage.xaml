@@ -65,18 +65,19 @@
 							<!-- Le contenu est autorisé à se trouver dans autant de colonnes que nécessaire -->
 							<common:RichTextColumns x:Name="richTextColumns" Margin="117,0,117,47">
 								<RichTextBlock x:Name="richTextBlock" Width="560" Style="{StaticResource ItemRichTextStyle}" IsTextSelectionEnabled="False">
-									<Paragraph>
+									<Paragraph TextAlignment="Center">
 										<Run FontSize="26.667" FontWeight="Light" Text="{Binding Title}"/>
-										<LineBreak/>
-										<LineBreak/>
-										<Run FontWeight="Normal" Text="{Binding Artist}"/>
 									</Paragraph>
 									<Paragraph LineStackingStrategy="MaxHeight" TextAlignment="Center">
 										<InlineUIContainer>
 											<Image x:Name="image" MaxHeight="480" Margin="0,20,0,10" Stretch="Uniform" Source="{Binding Image}" AutomationProperties.Name="{Binding Title}"/>
 										</InlineUIContainer>
 									</Paragraph>
-									<Paragraph>
+									<Paragraph TextAlignment="Center">
+										<Run FontSize="20" FontWeight="Light" Text="{Binding Artist}"/>
+										<LineBreak/>
+									</Paragraph>
+									<Paragraph TextAlignment="Justify">
 										<Run FontWeight="SemiLight" Text="{Binding Description}"/>
 									</Paragraph>
 								</RichTextBlock>
