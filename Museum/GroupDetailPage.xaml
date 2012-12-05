@@ -51,8 +51,7 @@
 
 			<GridView.Header>
 				<StackPanel Width="800" Margin="0,4,14,0">
-					<TextBlock Text="{Binding Name}" Margin="0,0,18,20" Style="{StaticResource SubheaderTextStyle}" MaxHeight="60"/>
-					<Image Source="{Binding Image}" Height="600" Margin="0,0,18,20" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+					<Image Source="{Binding Image}" Height="500" Margin="0,0,18,20" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
 					<TextBlock Text="{Binding Description}" Margin="0,0,18,0" Style="{StaticResource BodyTextStyle}"/>
 				</StackPanel>
 			</GridView.Header>
@@ -95,7 +94,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-			<TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false"/>
+			<TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false"/>
 		</Grid>
 
 		<VisualStateManager.VisualStateGroups>
