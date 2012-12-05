@@ -57,8 +57,8 @@ namespace Museum
         {
             // Accédez à la page de destination souhaitée, puis configurez la nouvelle page
             // en transmettant les informations requises en tant que paramètre de navigation.
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
-            this.Frame.Navigate(typeof(ItemDetailPage), itemId);
+            var artworkTitle = ((Artwork)e.ClickedItem).Title;
+			this.Frame.Navigate(typeof(ItemDetailPage), artworkTitle);
         }
     }
 }

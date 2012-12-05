@@ -25,7 +25,7 @@
 		* La ligne 1 qui contient le reste de la page
 	-->
 	<Grid
-		Style="{StaticResource LayoutRootStyle}"
+		Style="{StaticResource MuseumLayoutRootStyle}"
 		DataContext="{Binding Room}"
 		>
 

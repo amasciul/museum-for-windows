@@ -13,6 +13,7 @@
 					Styles définissant l'apparence globale de la plateforme
 					Requis par les modèles de projets et les modèles d'éléments Visual Studio
 				 -->
+
 				<ResourceDictionary Source="Common/StandardStyles.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			
@@ -20,6 +21,13 @@
 			<local:MuseumSource x:Key="museumSource" />
 			<x:String x:Key="AppName">Museum</x:String>
 			
+			
+			<!--Bordeaux-->
+			<SolidColorBrush x:Key="MuseumBackgroundBrush" Color="#FF4C1B1B"/>
+			<Style x:Key="MuseumLayoutRootStyle" TargetType="Panel" BasedOn="{StaticResource LayoutRootStyle}">
+				<Setter Property="Background" Value="{StaticResource MuseumBackgroundBrush}"/>
+			</Style>
+
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

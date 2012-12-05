@@ -30,7 +30,7 @@
 		* La ligne 0 qui contient le bouton Précédent et le titre de la page
 		* La ligne 1 qui contient le reste de la page
 	-->
-	<Grid Style="{StaticResource LayoutRootStyle}">
+	<Grid Style="{StaticResource MuseumLayoutRootStyle}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="140"/>
 			<RowDefinition Height="*"/>

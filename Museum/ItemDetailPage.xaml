@@ -25,7 +25,7 @@
 		* La ligne 1 qui contient le reste de la page
 	-->
 	<Grid
-		Style="{StaticResource LayoutRootStyle}"
+		Style="{StaticResource MuseumLayoutRootStyle}"
 		DataContext="{Binding Room}">
 
 		<Grid.RowDefinitions>
@@ -71,7 +71,7 @@
 										<LineBreak/>
 										<Run FontWeight="Normal" Text="{Binding Artist}"/>
 									</Paragraph>
-									<Paragraph LineStackingStrategy="MaxHeight">
+									<Paragraph LineStackingStrategy="MaxHeight" TextAlignment="Center">
 										<InlineUIContainer>
 											<Image x:Name="image" MaxHeight="480" Margin="0,20,0,10" Stretch="Uniform" Source="{Binding Image}" AutomationProperties.Name="{Binding Title}"/>
 										</InlineUIContainer>
