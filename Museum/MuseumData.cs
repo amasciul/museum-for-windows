@@ -32,6 +32,7 @@ namespace Museum
 	// Holds info for a single artwork
 	class Artwork
 	{
+		public Room Room { get; set; }
 		public string Title { get; set; }
 		public string Artist { get; set; }
 		public string Description { get; set; }
@@ -82,7 +83,11 @@ namespace Museum
 								currentArtwork.Artist = reader["artist"];
 								currentArtwork.Description = reader["desc"];
 								currentArtwork.Image = new Uri(reader["image"]);
-								if (currentRoom != null) currentRoom.Artworks.Add(currentArtwork);
+								if (currentRoom != null)
+								{
+									currentArtwork.Room = currentRoom;
+									currentRoom.Artworks.Add(currentArtwork);
+								}
 								break;
 						}
 					}
@@ -104,6 +109,18 @@ namespace Museum
 			foreach(Room r in Rooms)
 			{
 				if(r.Name == roomName)return r;
+			}
+			return null;
+		}
+
+		public Artwork GetArtwork(String artworkTitle)
+		{
+			foreach(Room r in Rooms)
+			{
+				foreach (Artwork a in r.Artworks)
+				{
+					if (a.Title == artworkTitle) return a;
+				}
 			}
 			return null;
 		}

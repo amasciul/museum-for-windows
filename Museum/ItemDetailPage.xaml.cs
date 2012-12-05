@@ -47,10 +47,16 @@ namespace Museum
             }
 
             // TODO: créez un modèle de données approprié pour le domaine posant problème pour remplacer les exemples de données
-            var item = SampleDataSource.GetItem((String)navigationParameter);
-            this.DefaultViewModel["Group"] = item.Group;
-            this.DefaultViewModel["Items"] = item.Group.Items;
-            this.flipView.SelectedItem = item;
+			//var item = SampleDataSource.GetItem((String)navigationParameter);
+			//this.DefaultViewModel["Group"] = item.Group;
+			//this.DefaultViewModel["Items"] = item.Group.Items;
+            
+
+			MuseumSource museumSource = (MuseumSource)App.Current.Resources["museumSource"];
+			Artwork artwork = museumSource.GetArtwork((String)navigationParameter);
+			this.DefaultViewModel["Room"] = artwork.Room;
+			this.DefaultViewModel["Artworks"] = artwork.Room.Artworks;
+			this.flipView.SelectedItem = artwork;
         }
 
         /// <summary>
