@@ -17,6 +17,7 @@ namespace Museum
 	{
 		public string Name { get; set; }
 		public string Description { get; set; }
+		public Uri Image { get; set; }
 		private List<Artwork> _artworks = new List<Artwork>();
 		public List<Artwork> Artworks
 		{
@@ -72,6 +73,7 @@ namespace Museum
 								currentRoom = new Room();
 								currentRoom.Name = reader["name"];
 								currentRoom.Description = reader["description"];
+								currentRoom.Image = new Uri(reader["image"]);
 								_Rooms.Add(currentRoom);
 								break;
 							case "artwork":
@@ -113,6 +115,7 @@ namespace Museum
 			{
 				s += room.Name + "\n";
 				s += room.Description + "\n";
+				s += room.Image + "\n";
 				foreach (Artwork artwork in room.Artworks)
 				{
 					s += artwork.Title + "\n";
