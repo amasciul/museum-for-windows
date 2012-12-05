@@ -67,8 +67,8 @@ namespace Museum
         /// <param name="pageState">Dictionnaire vide à remplir à l'aide de l'état sérialisable.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
-            var selectedItem = (SampleDataItem)this.flipView.SelectedItem;
-            pageState["SelectedItem"] = selectedItem.UniqueId;
+            var selectedArtwork = (Artwork)this.flipView.SelectedItem;
+			pageState["SelectedItem"] = selectedArtwork.Title;
         }
     }
 }
