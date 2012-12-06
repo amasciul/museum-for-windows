@@ -144,8 +144,8 @@
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Foreground="{StaticResource MuseumRootBackgroundBrush}"/>
-			<TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false" Foreground="{StaticResource MuseumRootBackgroundBrush}"/>
+			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource ItemDetailsBackButtonStyle}" Foreground="{StaticResource MuseumBordeauxBrush}"/>
+			<TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false" Foreground="{StaticResource MuseumBordeauxBrush}"/>
 		</Grid>
 
 		<VisualStateManager.VisualStateGroups>
