@@ -25,7 +25,7 @@
 		* La ligne 1 qui contient le reste de la page
 	-->
 	<Grid
-		Style="{StaticResource MuseumLayoutRootStyle}"
+		Style="{StaticResource MuseumLayoutItemStyle}"
 		DataContext="{Binding Room}">
 
 		<Grid.RowDefinitions>
@@ -64,7 +64,7 @@
 
 							<!-- Le contenu est autorisé à se trouver dans autant de colonnes que nécessaire -->
 							<common:RichTextColumns x:Name="richTextColumns" Margin="117,0,117,47">
-								<RichTextBlock x:Name="richTextBlock" Width="560" Style="{StaticResource ItemRichTextStyle}" IsTextSelectionEnabled="False">
+								<RichTextBlock x:Name="richTextBlock" Width="560" Style="{StaticResource MuseumItemRichTextStyle}" IsTextSelectionEnabled="True">
 									<Paragraph TextAlignment="Center">
 										<Run FontSize="26.667" FontWeight="Light" Text="{Binding Title}"/>
 									</Paragraph>
@@ -144,8 +144,8 @@
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-			<TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false"/>
+			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}" Foreground="{StaticResource MuseumRootBackgroundBrush}"/>
+			<TextBlock x:Name="pageTitle" Text="{Binding Name}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false" Foreground="{StaticResource MuseumRootBackgroundBrush}"/>
 		</Grid>
 
 		<VisualStateManager.VisualStateGroups>

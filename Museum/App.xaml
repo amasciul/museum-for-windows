@@ -23,10 +23,56 @@
 			
 			
 			<!--Bordeaux-->
-			<SolidColorBrush x:Key="MuseumBackgroundBrush" Color="#FF4C1B1B"/>
+			<SolidColorBrush x:Key="MuseumRootBackgroundBrush" Color="#FF4C1B1B"/>
 			<Style x:Key="MuseumLayoutRootStyle" TargetType="Panel" BasedOn="{StaticResource LayoutRootStyle}">
-				<Setter Property="Background" Value="{StaticResource MuseumBackgroundBrush}"/>
+				<Setter Property="Background" Value="{StaticResource MuseumRootBackgroundBrush}"/>
 			</Style>
+			
+			<!--Beige-->
+			<SolidColorBrush x:Key="MuseumItemBackgroundPage" Color="Beige" />
+			<Style x:Key="MuseumLayoutItemStyle" TargetType="Panel" BasedOn="{StaticResource LayoutRootStyle}">
+				<Setter Property="Background" Value="{StaticResource MuseumItemBackgroundPage}"/>
+			</Style>
+			<Style x:Key="MuseumItemRichTextStyle" TargetType="RichTextBlock" BasedOn="{StaticResource BaselineRichTextStyle}">
+				<Setter Property="Foreground" Value="{StaticResource MuseumRootBackgroundBrush}" />
+			</Style>
+
+
+
+			<Style x:Key="MuseumTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
+				<Setter Property="FontSize" Value="20"/>
+				<Setter Property="FontWeight" Value="Light" />
+			</Style>
+			<Style x:Key="MuseumCaptionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
+				<Setter Property="FontSize" Value="16"/>
+				<Setter Property="Foreground" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+			</Style>
+			<DataTemplate x:Key="SquareItemTemplate">
+				<Grid HorizontalAlignment="Left" Width="250" Height="250">
+					<Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}">
+						<Image Source="{Binding Image}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+					</Border>
+					<StackPanel VerticalAlignment="Bottom" Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}">
+						<TextBlock Text="{Binding Title}" Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" Style="{StaticResource MuseumTitleTextStyle}" Height="60" Margin="15,0,15,0"/>
+						<TextBlock Text="{Binding Artist}" Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource MuseumCaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+					</StackPanel>
+				</Grid>
+			</DataTemplate>
+			<DataTemplate x:Key="MuseumStandard80ItemTemplate">
+				<Grid Margin="6">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="60" Height="60">
+						<Image Source="{Binding Image}" Stretch="UniformToFill"/>
+					</Border>
+					<StackPanel Grid.Column="1" Margin="10,0,0,0">
+						<TextBlock Text="{Binding Title}" Style="{StaticResource ItemTextStyle}" MaxHeight="40"/>
+						<TextBlock Text="{Binding Subtitle}" Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap"/>
+					</StackPanel>
+				</Grid>
+			</DataTemplate>
 
 		</ResourceDictionary>
 	</Application.Resources>
